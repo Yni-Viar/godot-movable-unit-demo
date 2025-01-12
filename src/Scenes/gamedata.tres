@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="GameData" load_steps=6 format=3 uid="uid://bc2nqoyjah638"]
+
+[ext_resource type="Script" path="res://DynamicObjects/PlayerInventory/Item.gd" id="1_0myyv"]
+[ext_resource type="Script" path="res://Scripts/GameData/GameData.gd" id="1_d6yh1"]
+[ext_resource type="Resource" uid="uid://djdbc6vnvky4u" path="res://DynamicObjects/InventoryItems/ItemDisarmer.tres" id="2_cul63"]
+[ext_resource type="Script" path="res://PlayerController/PlayerClassResources/PuppetResource.gd" id="3_7lr8a"]
+[ext_resource type="Resource" uid="uid://ce0170j1xfbhv" path="res://PlayerController/PlayerClassResources/Default.tres" id="4_gptbs"]
+
+[resource]
+script = ExtResource("1_d6yh1")
+puppet_classes = Array[ExtResource("3_7lr8a")]([ExtResource("4_gptbs")])
+items = Array[ExtResource("1_0myyv")]([ExtResource("2_cul63")])
+ambient_path = ""

@@ -1,0 +1,402 @@
+[gd_scene load_steps=35 format=3 uid="uid://mu7j26by23js"]
+
+[ext_resource type="Script" path="res://Scripts/GameCore.gd" id="1_t57ow"]
+[ext_resource type="Resource" uid="uid://bc2nqoyjah638" path="res://Scenes/gamedata.tres" id="2_nr3yq"]
+[ext_resource type="Script" path="res://Scripts/UI/PlayerUI.gd" id="3_540u7"]
+[ext_resource type="Texture2D" uid="uid://bmw4fxmnmwhov" path="res://Assets/HUD/arrow.png" id="4_7g8hg"]
+[ext_resource type="Script" path="res://Scripts/FPSCounter.gd" id="5_2m25w"]
+[ext_resource type="Script" path="res://Scripts/UI/TouchscreenToggle.gd" id="7_cdmue"]
+[ext_resource type="Script" path="res://Scripts/UI/TouchBar.gd" id="8_8kj62"]
+[ext_resource type="Script" path="res://Scripts/UI/TouchButtons.gd" id="9_ff22w"]
+[ext_resource type="Texture2D" uid="uid://bhemwrx2xlq8c" path="res://Assets/HUD/Touch/open_map.png" id="10_xe3bt"]
+[ext_resource type="Texture2D" uid="uid://cxmnvd5xm22h5" path="res://Assets/HUD/Touch/open_map_click.png" id="11_55a7g"]
+[ext_resource type="Texture2D" uid="uid://bcfqo37gvsf4d" path="res://Assets/HUD/Touch/open_map_disabled.png" id="12_qh6i4"]
+[ext_resource type="Texture2D" uid="uid://b28sqvedbs3td" path="res://Assets/HUD/Touch/inventory.png" id="13_rmptg"]
+[ext_resource type="Texture2D" uid="uid://dicyig8ufflap" path="res://Assets/HUD/Touch/inventory_click.png" id="14_3yhp8"]
+[ext_resource type="Texture2D" uid="uid://c05r00ja6fyw8" path="res://Assets/HUD/Touch/inventory_disabled.png" id="15_h5lgg"]
+[ext_resource type="Texture2D" uid="uid://bxm4i7spthmmg" path="res://Assets/HUD/Touch/interact_with_item.png" id="16_pab2u"]
+[ext_resource type="Texture2D" uid="uid://bvtr04ysk4jcq" path="res://Assets/HUD/Touch/interact_with_item_click.png" id="17_lqjjg"]
+[ext_resource type="Texture2D" uid="uid://dc0d4vk4qiie1" path="res://Assets/HUD/Touch/interact_with_item_disabled.png" id="18_yh3tl"]
+[ext_resource type="Texture2D" uid="uid://cnpfe7ywcwnqm" path="res://Assets/HUD/Touch/point_a_unit.png" id="19_sdeya"]
+[ext_resource type="Texture2D" uid="uid://k1uddjj347va" path="res://Assets/HUD/Touch/point_a_unit_click.png" id="20_hu4tx"]
+[ext_resource type="Texture2D" uid="uid://i7frmo7y2knr" path="res://Assets/HUD/Touch/point_a_unit_disabled.png" id="21_arnm0"]
+[ext_resource type="Script" path="res://addons/virtual_joystick/virtual_joystick_instantiator.gd" id="22_rabta"]
+[ext_resource type="Texture2D" uid="uid://i517a0qhnukf" path="res://UI/back_button_small.png" id="23_w5ftg"]
+[ext_resource type="Texture2D" uid="uid://boy7mjqt2opnw" path="res://UI/back_button_disabled_small.png" id="24_d2yx1"]
+[ext_resource type="Script" path="res://Scripts/UI/InventoryUI.gd" id="25_qicby"]
+[ext_resource type="Theme" uid="uid://4k2un7nm7xc6" path="res://UITheme.tres" id="26_5a6mf"]
+[ext_resource type="Script" path="res://MapGen/Extensions/MapGenHud.gd" id="27_ptior"]
+[ext_resource type="Script" path="res://MapGen/MapGen.gd" id="28_chbhs"]
+[ext_resource type="Script" path="res://MapGen/MapGenZone.gd" id="28_u2qme"]
+[ext_resource type="PackedScene" uid="uid://8ik28au1k20l" path="res://PlayerController/Player.tscn" id="29_7jg3s"]
+[ext_resource type="Resource" uid="uid://dvp1bo00wg2yv" path="res://MapGen/test.tres" id="29_lq7v7"]
+[ext_resource type="Script" path="res://Scripts/ObjectSystem.gd" id="30_fjgsp"]
+[ext_resource type="Environment" uid="uid://cpjkvy5s2l8ae" path="res://DefaultGraphics.tres" id="31_i2cpo"]
+[ext_resource type="PackedScene" uid="uid://o6rnnciwmwvn" path="res://GDsh/InGameConsole.tscn" id="32_f2bq5"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_xi0ky"]
+
+[node name="Game" type="Node3D"]
+script = ExtResource("1_t57ow")
+game_data = ExtResource("2_nr3yq")
+
+[node name="PlayerUI" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("3_540u7")
+
+[node name="Cursor" type="TextureRect" parent="PlayerUI"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("4_7g8hg")
+
+[node name="Counter" type="Label" parent="PlayerUI"]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -26.0
+offset_right = 40.0
+grow_vertical = 0
+text = "FPS"
+script = ExtResource("5_2m25w")
+
+[node name="BossContainer" type="VBoxContainer" parent="PlayerUI"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -320.0
+offset_right = 320.0
+offset_bottom = 256.0
+grow_horizontal = 2
+
+[node name="DevWarning" type="Label" parent="PlayerUI"]
+visible = false
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -512.0
+offset_top = -96.0
+offset_right = 513.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_colors/font_color = Color(1, 0, 0, 1)
+theme_override_font_sizes/font_size = 24
+text = "PRERELEASE_WARN"
+horizontal_alignment = 1
+
+[node name="TouchUI" type="Control" parent="PlayerUI"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("7_cdmue")
+
+[node name="Panel" type="Panel" parent="PlayerUI/TouchUI"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.278
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -0.256042
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_xi0ky")
+script = ExtResource("8_8kj62")
+
+[node name="UIPanel" type="HBoxContainer" parent="PlayerUI/TouchUI"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -144.0
+offset_top = -144.0
+offset_right = -12.0
+offset_bottom = -16.0
+grow_horizontal = 0
+grow_vertical = 0
+script = ExtResource("9_ff22w")
+
+[node name="Map" type="TextureButton" parent="PlayerUI/TouchUI/UIPanel"]
+layout_mode = 2
+texture_normal = ExtResource("10_xe3bt")
+texture_pressed = ExtResource("11_55a7g")
+texture_hover = ExtResource("10_xe3bt")
+texture_disabled = ExtResource("12_qh6i4")
+texture_focused = ExtResource("10_xe3bt")
+
+[node name="Inventory" type="TextureButton" parent="PlayerUI/TouchUI/UIPanel"]
+layout_mode = 2
+texture_normal = ExtResource("13_rmptg")
+texture_pressed = ExtResource("14_3yhp8")
+texture_hover = ExtResource("13_rmptg")
+texture_disabled = ExtResource("15_h5lgg")
+texture_focused = ExtResource("13_rmptg")
+
+[node name="TapWithItem" type="TextureButton" parent="PlayerUI/TouchUI/UIPanel"]
+layout_mode = 2
+texture_normal = ExtResource("16_pab2u")
+texture_pressed = ExtResource("17_lqjjg")
+texture_hover = ExtResource("16_pab2u")
+texture_disabled = ExtResource("18_yh3tl")
+texture_focused = ExtResource("16_pab2u")
+
+[node name="Tap" type="TextureButton" parent="PlayerUI/TouchUI/UIPanel"]
+layout_mode = 2
+texture_normal = ExtResource("19_sdeya")
+texture_pressed = ExtResource("20_hu4tx")
+texture_hover = ExtResource("19_sdeya")
+texture_disabled = ExtResource("21_arnm0")
+texture_focused = ExtResource("19_sdeya")
+
+[node name="Virtual Joystick" type="Control" parent="PlayerUI/TouchUI"]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -40.0
+offset_right = 40.0
+grow_vertical = 0
+script = ExtResource("22_rabta")
+
+[node name="Back" type="TextureButton" parent="PlayerUI/TouchUI"]
+layout_mode = 0
+offset_right = 64.0
+offset_bottom = 64.0
+texture_normal = ExtResource("23_w5ftg")
+texture_pressed = ExtResource("23_w5ftg")
+texture_hover = ExtResource("23_w5ftg")
+texture_disabled = ExtResource("24_d2yx1")
+texture_focused = ExtResource("23_w5ftg")
+
+[node name="DesktopUI" type="Control" parent="PlayerUI"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="PlayerUI/DesktopUI"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -40.0
+offset_top = -23.0
+grow_horizontal = 0
+grow_vertical = 0
+text = "This demo uses CC0 Assets. Check the source.
+Tab opens inventory
+~ opens map
+E - point the dummy to position
+R - alternative interact (e.g. cuff with disarmer)"
+
+[node name="InventoryUI" type="Control" parent="PlayerUI"]
+visible = false
+layout_mode = 1
+anchor_left = 0.296
+anchor_top = 0.144
+anchor_right = 0.704
+anchor_bottom = 0.856
+offset_left = 0.119995
+offset_top = 0.319992
+offset_right = -0.120056
+offset_bottom = -0.320068
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ItemList" type="ItemList" parent="PlayerUI/InventoryUI"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 0.922
+offset_bottom = -0.0640259
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("25_qicby")
+
+[node name="UseItem" type="Button" parent="PlayerUI/InventoryUI"]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -40.0
+offset_right = 197.0
+grow_vertical = 0
+theme = ExtResource("26_5a6mf")
+text = "USE_ITEM"
+
+[node name="RemoveItem" type="Button" parent="PlayerUI/InventoryUI"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -197.0
+offset_top = -40.0
+grow_horizontal = 0
+grow_vertical = 0
+theme = ExtResource("26_5a6mf")
+text = "REMOVE_ITEM"
+
+[node name="Map" type="Panel" parent="PlayerUI"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("27_ptior")
+
+[node name="ScrollContainer" type="ScrollContainer" parent="PlayerUI/Map"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -640.0
+offset_top = -360.0
+offset_right = 640.0
+offset_bottom = 360.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="GridContainer" type="GridContainer" parent="PlayerUI/Map/ScrollContainer"]
+layout_mode = 2
+
+[node name="CloseButton" type="Button" parent="PlayerUI/Map"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -32.0
+offset_top = -48.0
+offset_right = 28.0
+offset_bottom = -12.0
+grow_horizontal = 2
+grow_vertical = 0
+theme = ExtResource("26_5a6mf")
+theme_override_font_sizes/font_size = 20
+text = "Close"
+
+[node name="PauseMenu" type="Control" parent="PlayerUI"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Panel" type="Panel" parent="PlayerUI/PauseMenu"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 0.237
+anchor_bottom = 1.0
+offset_right = 0.959961
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ExitButton" type="Button" parent="PlayerUI/PauseMenu/Panel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.097
+anchor_right = 0.5
+anchor_bottom = 0.097
+offset_left = -112.992
+offset_top = -22.856
+offset_right = 111.008
+offset_bottom = 23.144
+text = "EXIT"
+
+[node name="ContinueButton" type="Button" parent="PlayerUI/PauseMenu/Panel"]
+layout_mode = 0
+offset_left = 40.0
+offset_top = 640.0
+offset_right = 264.0
+offset_bottom = 688.0
+text = "CONTINUE"
+
+[node name="FacilityGenerator" type="Node3D" parent="."]
+script = ExtResource("28_chbhs")
+rooms = Array[ExtResource("28_u2qme")]([ExtResource("29_lq7v7")])
+better_zone_generation = false
+better_zone_generation_waiter = 2
+
+[node name="Spectator" parent="." instance=ExtResource("29_7jg3s")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 32, 12.274, 32)
+
+[node name="Items" type="Node3D" parent="."]
+script = ExtResource("30_fjgsp")
+types = 1
+
+[node name="MapObjects" type="Node" parent="."]
+
+[node name="Ragdolls" type="Node3D" parent="."]
+
+[node name="NPCs" type="Node3D" parent="."]
+script = ExtResource("30_fjgsp")
+
+[node name="Decals" type="Node3D" parent="."]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = ExtResource("31_i2cpo")
+
+[node name="BackgroundMusic" type="AudioStreamPlayer" parent="."]
+volume_db = -10.0
+bus = &"Music"
+
+[node name="InGameConsole" parent="." instance=ExtResource("32_f2bq5")]
+visible = false
+
+[connection signal="button_down" from="PlayerUI/TouchUI/UIPanel/Map" to="PlayerUI/TouchUI/UIPanel" method="_on_map_button_down"]
+[connection signal="button_up" from="PlayerUI/TouchUI/UIPanel/Map" to="PlayerUI/TouchUI/UIPanel" method="_on_map_button_up"]
+[connection signal="button_down" from="PlayerUI/TouchUI/UIPanel/Inventory" to="PlayerUI/TouchUI/UIPanel" method="_on_inventory_button_down"]
+[connection signal="button_up" from="PlayerUI/TouchUI/UIPanel/Inventory" to="PlayerUI/TouchUI/UIPanel" method="_on_inventory_button_up"]
+[connection signal="button_down" from="PlayerUI/TouchUI/UIPanel/TapWithItem" to="PlayerUI/TouchUI/UIPanel" method="_on_tap_with_item_button_down"]
+[connection signal="button_up" from="PlayerUI/TouchUI/UIPanel/TapWithItem" to="PlayerUI/TouchUI/UIPanel" method="_on_tap_with_item_button_up"]
+[connection signal="button_down" from="PlayerUI/TouchUI/UIPanel/Tap" to="PlayerUI/TouchUI/UIPanel" method="_on_tap_button_down"]
+[connection signal="button_up" from="PlayerUI/TouchUI/UIPanel/Tap" to="PlayerUI/TouchUI/UIPanel" method="_on_tap_button_up"]
+[connection signal="button_down" from="PlayerUI/TouchUI/Back" to="PlayerUI/TouchUI" method="_on_back_button_down"]
+[connection signal="item_clicked" from="PlayerUI/InventoryUI/ItemList" to="PlayerUI/InventoryUI/ItemList" method="_on_item_clicked"]
+[connection signal="button_down" from="PlayerUI/InventoryUI/UseItem" to="PlayerUI/InventoryUI/ItemList" method="_on_use_item_button_down"]
+[connection signal="button_up" from="PlayerUI/InventoryUI/UseItem" to="PlayerUI/InventoryUI/ItemList" method="_on_button_up"]
+[connection signal="button_down" from="PlayerUI/InventoryUI/RemoveItem" to="PlayerUI/InventoryUI/ItemList" method="_on_remove_item_button_down"]
+[connection signal="button_up" from="PlayerUI/InventoryUI/RemoveItem" to="PlayerUI/InventoryUI/ItemList" method="_on_button_up"]
+[connection signal="button_down" from="PlayerUI/Map/CloseButton" to="PlayerUI/Map" method="_on_close_button_button_down"]
+[connection signal="pressed" from="PlayerUI/PauseMenu/Panel/ExitButton" to="PlayerUI" method="_on_exit_button_pressed"]
+[connection signal="pressed" from="PlayerUI/PauseMenu/Panel/ContinueButton" to="PlayerUI" method="_on_continue_button_pressed"]
+[connection signal="generated" from="FacilityGenerator" to="." method="_on_facility_generator_generated"]
+[connection signal="generated" from="FacilityGenerator" to="PlayerUI/Map" method="_on_facility_generator_generated"]

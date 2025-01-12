@@ -1,0 +1,26 @@
+[gd_resource type="Resource" script_class="PuppetClass" load_steps=5 format=3 uid="uid://ce0170j1xfbhv"]
+
+[ext_resource type="Script" path="res://DynamicObjects/PlayerInventory/Item.gd" id="1_lcftq"]
+[ext_resource type="Resource" uid="uid://djdbc6vnvky4u" path="res://DynamicObjects/InventoryItems/ItemDisarmer.tres" id="2_l50s0"]
+[ext_resource type="PackedScene" uid="uid://bqoqnyepfa104" path="res://PlayerController/PlayerClassPrefab/default.tscn" id="3_krcee"]
+[ext_resource type="Script" path="res://PlayerController/PlayerClassResources/PuppetResource.gd" id="3_mqpkh"]
+
+[resource]
+script = ExtResource("3_mqpkh")
+puppet_class_name = "Default"
+speed = 3.0
+prefab = ExtResource("3_krcee")
+spawn_point_group = "DefaultSpawn"
+initial_amount = 4
+automatic = false
+footstep_sounds = {
+"run": PackedStringArray("res://Sounds/Character/Human/Step/Run1.ogg", "res://Sounds/Character/Human/Step/Run2.ogg", "res://Sounds/Character/Human/Step/Run3.ogg", "res://Sounds/Character/Human/Step/Run4.ogg", "res://Sounds/Character/Human/Step/Run5.ogg", "res://Sounds/Character/Human/Step/Run6.ogg", "res://Sounds/Character/Human/Step/Run7.ogg", "res://Sounds/Character/Human/Step/Run8.ogg"),
+"walk": PackedStringArray("res://Sounds/Character/Human/Step/Step1.ogg", "res://Sounds/Character/Human/Step/Step2.ogg", "res://Sounds/Character/Human/Step/Step3.ogg", "res://Sounds/Character/Human/Step/Step4.ogg", "res://Sounds/Character/Human/Step/Step5.ogg", "res://Sounds/Character/Human/Step/Step6.ogg", "res://Sounds/Character/Human/Step/Step7.ogg", "res://Sounds/Character/Human/Step/Step8.ogg")
+}
+fraction = 0
+apply_height_bugfix = false
+enable_wander = true
+inventory_item_size = 2
+health = Array[float]([100.0, 10.0])
+team = 2
+initial_items = Array[ExtResource("1_lcftq")]([ExtResource("2_l50s0")])

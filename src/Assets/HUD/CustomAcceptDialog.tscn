@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://bhvggqutn7ida"]
+
+[ext_resource type="Theme" uid="uid://4k2un7nm7xc6" path="res://UITheme.tres" id="1_0da1b"]
+[ext_resource type="Script" path="res://Scripts/CustomAcceptDialog.gd" id="1_db372"]
+
+[node name="AcceptDialog" type="AcceptDialog"]
+title = "Tip"
+position = Vector2i(32, 64)
+visible = true
+theme = ExtResource("1_0da1b")
+dialog_hide_on_ok = false
+script = ExtResource("1_db372")
+
+[connection signal="canceled" from="." to="." method="_on_canceled"]
+[connection signal="confirmed" from="." to="." method="_on_confirmed"]

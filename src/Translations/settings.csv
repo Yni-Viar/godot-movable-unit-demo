@@ -1,0 +1,22 @@
+keys,en,ru
+SETTINGS,Settings,Настройки
+LANGUAGE,Language:,Язык:
+GRAPHICS,Graphics:,Графика:
+SOUNDS,Sounds:,Звуки:
+INPUT,Input:,Ввод:
+MUSIC_SET,Music volume,Громкость музыки
+SOUND_SET,Sound volume (affects ALL sounds),Общая громкость
+SENS_SET,Mouse sensivity,Чувствительность мыши
+DYNAMIC_GI_SET,Dynamic GI,Динамичная графика (например свечение текстур)
+FOG_SET,"Volumetric fog toggle\n(if disabled, then standard fog appears\ninstead of volumetric)","Объемная дымка\n(если отключено,\nприменяется обычная дымка)"
+FULLSCREEN_SET,Fullscreen," Полный экран"
+GRAPHICS_DEFAULT_ENV,Default environment graphics,Графика окружения по умолчанию
+LANGUAGE_WARNING,"The in-game text may be not translated,\nif there is no translation file coming with the game","Если внутри игры не задан файл перевода,\nто текст будет на изначальном языке!"
+GLOW,Glow effect,Эффект свечения
+RESOLUTION,Screen resolution,Разрешение экрана
+OVERRIDE_RESOLUTION,Override resolution,Переназначить разрешение экрана
+LIGHT_SHADOWS,Light shadows,Тени от освещения
+REFLECTION_PROBES,Reflection probes,Отражения Cubemap
+VSYNC,V-sync,Вертикальная синхронизация
+LIGHT_SHADOW_WARNING,"This setting only disables light shadows,\nthat derive from LightSystemOmni or LightSystemSpot","Эта настройка отключает источники освещения,\nпроизводные от LightSystemOmni или LightSystemSpot"
+ENABLE_LIGHTS,Enable or disable lights\n(recommended for mobile or low-end devices),Включает или отключает освещение\n(рекомендуется только для мобильных или слабых устройств)

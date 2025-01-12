@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="Item" load_steps=3 format=3 uid="uid://djdbc6vnvky4u"]
+
+[ext_resource type="Script" path="res://DynamicObjects/PlayerInventory/Item.gd" id="1_78eph"]
+[ext_resource type="Texture2D" uid="uid://djxy6ouo7qbht" path="res://DynamicObjects/InventoryItems/Icons/Disarmer.png" id="2_pux7t"]
+
+[resource]
+script = ExtResource("1_78eph")
+id = 0
+name = "Disarmer"
+texture = ExtResource("2_pux7t")
+pickable_path = "res://DynamicObjects/InventoryItems/Prefabs/ItemDisarmer.tscn"
+pickup_sound_path = ""
+usage = 0
+upgrade_rough = Array[int]([])
+upgrade_coarse = Array[int]([])
+upgrade_one_to_one = Array[int]([])
+upgrade_fine = Array[int]([])
+upgrade_very_fine = Array[int]([])

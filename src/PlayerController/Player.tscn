@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://8ik28au1k20l"]
+
+[ext_resource type="Script" path="res://PlayerController/FlyPlayerScript.gd" id="1_niwgq"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_w7oyh"]
+
+[node name="Spectator" type="CharacterBody3D"]
+script = ExtResource("1_niwgq")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+
+[node name="RayCast3D" type="RayCast3D" parent="."]
+target_position = Vector3(0, 0, -64)
+collision_mask = 7
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("SphereShape3D_w7oyh")
