@@ -352,6 +352,7 @@ text = "CONTINUE"
 [node name="FacilityGenerator" type="Node3D" parent="."]
 script = ExtResource("28_chbhs")
 rooms = Array[ExtResource("28_u2qme")]([ExtResource("29_lq7v7")])
+enable_door_generation = false
 better_zone_generation = false
 better_zone_generation_waiter = 2
 
